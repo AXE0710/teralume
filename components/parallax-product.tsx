@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Product } from '@/lib/products'
+import Link from 'next/link'
 
 interface ParallaxProductProps {
   product: Product
@@ -43,6 +44,7 @@ export function ParallaxProduct({ product, index }: ParallaxProductProps) {
   const parallaxY = isMobile ? 0 : (mousePos.y - 0.5) * 20
 
   return (
+    <Link href={`/products/${product.id}`} className="block">
     <div
       ref={containerRef}
       className="group relative overflow-hidden rounded-2xl cursor-pointer h-72 sm:h-80 md:h-96 shadow-lg hover:shadow-2xl transition-shadow duration-500"
@@ -95,5 +97,6 @@ export function ParallaxProduct({ product, index }: ParallaxProductProps) {
         <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0 transform -skew-x-12" />
       </div>
     </div>
+    </Link>
   )
 }

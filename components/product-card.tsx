@@ -1,6 +1,8 @@
 import { Product } from '@/lib/products'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { ShoppingBag } from 'lucide-react'
 
 interface ProductCardProps {
   product: Product
@@ -8,53 +10,59 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link href={`/products/${product.id}`}>
-      <div className="group rounded-lg overflow-hidden border border-border bg-card hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col">
-        {/* Product Image */}
-        <div className="relative w-full h-64 bg-muted overflow-hidden">
+    <div className="group rounded-lg overflow-hidden border border-border bg-card hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+      {/* Product Image */}
+      <Link href={`/products/${product.id}`} className="block relative w-full h-64 bg-muted overflow-hidden">
           <Image
             src={product.image || "/placeholder.svg"}
             alt={product.name}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
-        </div>
+      </Link>
 
-        {/* Product Info */}
-        <div className="p-4 flex flex-col flex-grow">
+      {/* Product Info */}
+      <div className="p-4 flex flex-col flex-grow">
+        <Link href={`/products/${product.id}`}>
           <h3 className="font-semibold text-foreground text-sm line-clamp-2 mb-1 group-hover:text-primary transition-colors">
             {product.name}
           </h3>
-          
-          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-            {product.description}
-          </p>
+        </Link>
+        
+        <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+          {product.description}
+        </p>
 
-          {/* Colors */}
-          {product.colors && (
-            <div className="flex gap-2 mb-3">
-              {product.colors.map((color) => (
-                <div
-                  key={color}
-                  className="w-3 h-3 rounded-full border border-border"
-                  title={color}
-                  style={{
-                    backgroundColor: getColorValue(color),
-                  }}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Price */}
-          <div className="mt-auto">
-            <span className="text-lg font-bold text-primary">
-              ${product.price}
-            </span>
+        {/* Colors */}
+        {product.colors && (
+          <div className="flex gap-2 mb-3">
+            {product.colors.map((color) => (
+              <div
+                key={color}
+                className="w-3 h-3 rounded-full border border-border"
+                title={color}
+                style={{
+                  backgroundColor: getColorValue(color),
+                }}
+              />
+            ))}
           </div>
+        )}
+
+        {/* Price and Action */}
+        <div className="mt-auto flex items-center justify-between pt-2">
+          <span className="text-lg font-bold text-primary">
+            ${product.price}
+          </span>
+          <Link href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}>
+            <Button size="sm" className="h-8 px-3 text-xs gap-1.5">
+              <ShoppingBag className="w-3.5 h-3.5" />
+              Buy
+            </Button>
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

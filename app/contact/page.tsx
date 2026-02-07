@@ -6,16 +6,43 @@ import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { useState } from 'react'
+import { useState, Suspense, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-export default function ContactPage() {
+function ContactContent() {
+  const searchParams = useSearchParams()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    inquiryType: 'custom',
+    productType: '',
+    dimensions: '',
+    budget: '',
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    const productParam = searchParams.get('product')
+    const intentParam = searchParams.get('intent')
+
+    if (productParam) {
+      let messageText = `I'm interested in the ${productParam}. Could you please provide more details?`
+      let type = 'custom'
+
+      if (intentParam === 'buy') {
+        messageText = `I would like to purchase the ${productParam}. Please send me payment details and shipping information.`
+        type = 'general' // Switch to general to hide custom dimensions fields for direct buys
+      }
+
+      setFormData(prev => ({
+        ...prev,
+        inquiryType: type,
+        message: messageText
+      }))
+    }
+  }, [searchParams])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -29,7 +56,7 @@ export default function ContactPage() {
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      setFormData({ name: '', email: '', inquiryType: 'custom', productType: '', dimensions: '', budget: '', message: '' })
     }, 3000)
   }
 
@@ -40,9 +67,9 @@ export default function ContactPage() {
       {/* Header */}
       <section className="border-b border-border bg-secondary/3 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-semibold text-foreground mb-2">Get In Touch</h1>
+          <h1 className="text-4xl font-semibold text-foreground mb-2">Custom Requests</h1>
           <p className="text-muted-foreground">
-            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            Looking for something unique? Tell us about your dream textile piece, and we'll craft it for you.
           </p>
         </div>
       </section>
@@ -129,7 +156,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <div className="rounded-lg border border-border bg-card p-8">
-                <h2 className="text-2xl font-semibold text-foreground mb-6">Send us a Message</h2>
+                <h2 className="text-2xl font-semibold text-foreground mb-6">Request a Custom Piece</h2>
 
                 {submitted && (
                   <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary">
@@ -173,33 +200,70 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* Subject */}
+                  {/* Inquiry Type */}
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="subject" className="text-sm font-medium text-foreground">
-                      Subject
+                    <label htmlFor="inquiryType" className="text-sm font-medium text-foreground">
+                      Inquiry Type
                     </label>
                     <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
                       onChange={handleChange}
                       required
                       className="px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
-                      <option value="">Select a subject</option>
-                      <option value="product-inquiry">Product Inquiry</option>
-                      <option value="order-status">Order Status</option>
-                      <option value="shipping">Shipping Question</option>
-                      <option value="return">Return or Exchange</option>
-                      <option value="feedback">Feedback</option>
-                      <option value="other">Other</option>
+                      <option value="custom">Custom Product Request</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="wholesale">Wholesale / Trade</option>
                     </select>
                   </div>
+
+                  {formData.inquiryType === 'custom' && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {/* Product Type */}
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="productType" className="text-sm font-medium text-foreground">
+                          Product Type
+                        </label>
+                        <select
+                          id="productType"
+                          name="productType"
+                          value={formData.productType}
+                          onChange={handleChange}
+                          className="px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        >
+                          <option value="">Select type...</option>
+                          <option value="cushion">Cushion</option>
+                          <option value="blanket">Throw / Blanket</option>
+                          <option value="table-linen">Table Linen</option>
+                          <option value="curtains">Curtains</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      {/* Dimensions */}
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="dimensions" className="text-sm font-medium text-foreground">
+                          Dimensions (approx)
+                        </label>
+                        <input
+                          type="text"
+                          id="dimensions"
+                          name="dimensions"
+                          value={formData.dimensions}
+                          onChange={handleChange}
+                          className="px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="e.g. 20x20 inches"
+                        />
+                      </div>
+                    </div>
+                  )}
 
                   {/* Message */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="message" className="text-sm font-medium text-foreground">
-                      Message
+                      {formData.inquiryType === 'custom' ? 'Describe your vision (colors, materials, style)' : 'Message'}
                     </label>
                     <textarea
                       id="message"
@@ -216,11 +280,11 @@ export default function ContactPage() {
                   {/* Submit Button */}
                   <Button type="submit" size="lg" className="w-full gap-2">
                     <Send className="w-4 h-4" />
-                    Send Message
+                    {formData.inquiryType === 'custom' ? 'Submit Request' : 'Send Message'}
                   </Button>
 
                   <p className="text-xs text-muted-foreground text-center pt-2">
-                    We'll get back to you as soon as possible
+                    We'll review your request and get back to you within 24-48 hours.
                   </p>
                 </form>
               </div>
@@ -333,5 +397,13 @@ export default function ContactPage() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactContent />
+    </Suspense>
   )
 }

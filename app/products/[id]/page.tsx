@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, ShoppingBag, MessageCircle } from 'lucide-react'
 import { products } from '@/lib/products'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
@@ -14,16 +14,18 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === params.id)
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const product = products.find((p) => p.id === id)
   return {
     title: product ? `${product.name} | Teralume Living` : 'Product Not Found',
     description: product?.description || 'Discover premium home textiles at Teralume Living',
   }
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === params.id)
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const product = products.find((p) => p.id === id)
 
   if (!product) {
     notFound()
@@ -139,13 +141,23 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </p>
             </div>
 
-            {/* Contact CTA */}
-            <Link
-              href="/contact"
-              className="inline-block px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Get in Touch
-            </Link>
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Link
+                href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}
+                className="flex-1 inline-flex justify-center items-center gap-2 px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                Buy Now
+              </Link>
+              <Link
+                href={`/contact?product=${encodeURIComponent(product.name)}&intent=inquiry`}
+                className="flex-1 inline-flex justify-center items-center gap-2 px-8 py-3 border border-border bg-background hover:bg-muted font-semibold rounded-lg transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Ask a Question
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -157,7 +169,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               {relatedProducts.map((relProduct) => (
                 <Link
                   key={relProduct.id}
-                  href={`/products/${relProduct.id}`}
+                  href={`/contact?product=${encodeURIComponent(relProduct.name)}`}
                   className="group"
                 >
                   <div className="bg-muted rounded-lg overflow-hidden mb-4 h-48 flex items-center justify-center">
