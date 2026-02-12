@@ -102,7 +102,8 @@
     "colors": ["Natural", "Taupe"],
     "size": "14\" x 90\"",
     "material": "Linen Blend",
-    "care": "Dry clean only."
+    "care": "Dry clean only.",
+    "featured": true
   },
   {
     "id": "9",
@@ -206,7 +207,8 @@
     "colors": ["Geometric Print"],
     "size": "60\" x 102\"",
     "material": "Polyester",
-    "care": "Machine wash cold."
+    "care": "Machine wash cold.",
+    "featured": true
   },
   {
     "id": "17",
@@ -440,7 +442,8 @@
     "colors": ["Stripe"],
     "size": "18\" x 18\"",
     "material": "Cotton",
-    "care": "Machine wash warm."
+    "care": "Machine wash warm.",
+    "featured": true
   },
   {
     "id": "35",
@@ -987,7 +990,8 @@
     "colors": ["Multi"],
     "size": "35\" x 70\"",
     "material": "100% Cotton",
-    "care": "Machine wash cold."
+    "care": "Machine wash cold.",
+    "featured": true
   },
   {
     "id": "77",

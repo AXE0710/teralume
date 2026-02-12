@@ -27,9 +27,18 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               Home
+            </Link>
+            <Link href="/catalog?collection=new-arrivals" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              New Arrivals
+            </Link>
+            <Link href="/catalog?collection=best-sellers" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              Best Sellers
+            </Link>
+            <Link href="/kids" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              Kids
             </Link>
             <Link href="/about" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               About
@@ -57,6 +66,15 @@ export function Navigation() {
           <div className="md:hidden pb-4 border-t border-border">
             <Link href="/" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
               Home
+            </Link>
+            <Link href="/catalog?collection=new-arrivals" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+              New Arrivals
+            </Link>
+            <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+              Best Sellers
+            </Link>
+            <Link href="/kids" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+              Kids
             </Link>
             <Link href="/about" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
               About

@@ -13,6 +13,7 @@ export interface Product {
   size?: string
   material?: string
   care?: string
+  usage?: string
 }
 
 export const products: Product[] = productsData as Product[]

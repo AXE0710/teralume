@@ -6,19 +6,26 @@ import { ShoppingBag } from 'lucide-react'
 
 interface ProductCardProps {
   product: Product
+  badge?: string
+  benefit?: string
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, badge, benefit }: ProductCardProps) {
   return (
     <div className="group rounded-lg overflow-hidden border border-border bg-card hover:shadow-lg transition-all duration-300 h-full flex flex-col">
       {/* Product Image */}
-      <Link href={`/products/${product.id}`} className="block relative w-full h-64 bg-muted overflow-hidden">
+      <Link href={`/products/${product.id}`} className="block relative w-full aspect-[3/4] bg-muted overflow-hidden">
           <Image
             src={product.image || "/placeholder.svg"}
-            alt={product.name}
+            alt={`${product.name} - Sustainable Home Textile`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
+          {badge && (
+            <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-medium uppercase tracking-wider text-foreground shadow-sm">
+              {badge}
+            </div>
+          )}
       </Link>
 
       {/* Product Info */}
@@ -29,8 +36,8 @@ export function ProductCard({ product }: ProductCardProps) {
           </h3>
         </Link>
         
-        <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
-          {product.description}
+        <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
+          {benefit || product.description}
         </p>
 
         {/* Colors */}
@@ -55,7 +62,7 @@ export function ProductCard({ product }: ProductCardProps) {
             ${product.price}
           </span>
           <Link href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}>
-            <Button size="sm" className="h-8 px-3 text-xs gap-1.5">
+            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform">
               <ShoppingBag className="w-3.5 h-3.5" />
               Buy
             </Button>
