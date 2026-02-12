@@ -5,21 +5,15 @@ import Image from "next/image"
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { ProductCard } from '@/components/product-card'
-import { products } from "@/lib/products"
+import kidsProducts from "@/lib/kids.json"
 
 export const metadata: Metadata = {
   title: 'TerraLume Mini | Sustainable Kids Textiles',
   description: 'Organic, gentle, and playful textiles for the little ones.',
 }
 
-const kidsProducts = [
-    
-]
-
 export default function KidsPage() {
-  // Add some random products from the main catalog
-  const randomProducts = [...products].sort(() => 0.5 - Math.random()).slice(0, 4)
-  const allProducts = [ ...randomProducts]
+  const allProducts = [...kidsProducts]
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
