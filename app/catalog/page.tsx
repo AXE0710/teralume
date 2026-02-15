@@ -19,10 +19,12 @@ function CatalogContent() {
 
   const categories = [
     { id: 'all', label: 'All Products' },
-    { id: 'cushions', label: 'Cushions' },
-    { id: 'kitchen', label: 'Kitchen' },
-    { id: 'living-room', label: 'Living Room' },
     { id: 'table-linen', label: 'Table Linen' },
+    { id: 'kitchen', label: 'Kitchen' },
+    { id: 'cushions', label: 'Cushions' },
+    { id: 'throws-blankets', label: 'Throws & Blankets' },
+    { id: 'beach', label: 'Beach' },
+    { id: 'bags', label: 'Bags' },
   ]
 
   const filteredProducts = currentCategory === 'all'

@@ -4,6 +4,7 @@ import { Geist, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Instagram } from 'lucide-react'
 import './globals.css'
+import { ScreenshotPrevention } from '@/components/screenshot-prevention'
 
 const geist = Geist({ 
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
+        <ScreenshotPrevention />
         <div className="fixed bottom-6 right-6 z-50 group">
           <span className="absolute right-full top-1/2 -translate-y-1/2 mr-4 bg-white text-black px-3 py-1.5 rounded-lg shadow-md text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
             Message on Instagram
