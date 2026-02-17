@@ -31,23 +31,20 @@ export function Navigation() {
             <Link href="/" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               Home
             </Link>
-            <Link href="/catalog?collection=new-arrivals" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              New Arrivals
-            </Link>
-            <Link href="/catalog?collection=best-sellers" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Best Sellers
+            <Link href="/catalog" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              Catalogue
             </Link>
             <Link href="/kids" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Kids
+              KIDS
+            </Link>
+            <Link href="/catalog?collection=best-sellers" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              BEST SELLERS
             </Link>
             <Link href="/about" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              About
-            </Link>
-            <Link href="/catalog" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Catalog
+              ABOUT
             </Link>
             <Link href="/contact" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Contact
+              CONTACT
             </Link>
           </div>
 
@@ -67,23 +64,20 @@ export function Navigation() {
             <Link href="/" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
               Home
             </Link>
-            <Link href="/catalog?collection=new-arrivals" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              New Arrivals
-            </Link>
-            <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Best Sellers
+            <Link href="/catalog" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+              Catalogue
             </Link>
             <Link href="/kids" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Kids
+              KIDS
+            </Link>
+            <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+              BEST SELLERS
             </Link>
             <Link href="/about" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              About
-            </Link>
-            <Link href="/catalog" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Catalog
+              ABOUT
             </Link>
             <Link href="/contact" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Contact
+              CONTACT
             </Link>
           </div>
         )}

@@ -1,11 +1,12 @@
 'use client'
 
-import React, { Suspense, useState, useEffect } from "react"
+import React, { Suspense, useState, useEffect, useRef } from "react"
 import { useSearchParams, useRouter } from 'next/navigation'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { ProductCard } from '@/components/product-card'
 import { products } from '@/lib/products'
+import kidsProducts from '@/lib/kids.json'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
@@ -16,9 +17,11 @@ function CatalogContent() {
   const router = useRouter()
   const currentCategory = searchParams.get('category') || 'all'
   const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE)
+  const observerTarget = useRef<HTMLDivElement>(null)
 
   const categories = [
     { id: 'all', label: 'All Products' },
+    { id: 'kids', label: 'Kids' },
     { id: 'table-linen', label: 'Table Linen' },
     { id: 'kitchen', label: 'Kitchen' },
     { id: 'cushions', label: 'Cushions' },
@@ -27,9 +30,11 @@ function CatalogContent() {
     { id: 'bags', label: 'Bags' },
   ]
 
+  const allProducts = [...products, ...kidsProducts] as any[]
+
   const filteredProducts = currentCategory === 'all'
-    ? products
-    : products.filter(p => p.category === currentCategory)
+    ? allProducts
+    : allProducts.filter(p => p.category === currentCategory)
 
   const visibleProducts = filteredProducts.slice(0, visibleCount)
 
@@ -37,6 +42,23 @@ function CatalogContent() {
   useEffect(() => {
     setVisibleCount(ITEMS_PER_PAGE)
   }, [currentCategory])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < filteredProducts.length) {
+          setVisibleCount((prev) => prev + ITEMS_PER_PAGE)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current)
+    }
+
+    return () => observer.disconnect()
+  }, [visibleCount, filteredProducts.length])
 
   const handleCategoryChange = (categoryId: string) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -46,10 +68,6 @@ function CatalogContent() {
       params.set('category', categoryId)
     }
     router.push(`/catalog?${params.toString()}`)
-  }
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + ITEMS_PER_PAGE)
   }
 
   return (
@@ -88,10 +106,8 @@ function CatalogContent() {
         </div>
 
         {visibleCount < filteredProducts.length && (
-          <div className="mt-12 flex justify-center">
-            <Button onClick={handleLoadMore} variant="outline" size="lg" className="min-w-[200px]">
-              Load More
-            </Button>
+          <div ref={observerTarget} className="mt-12 flex justify-center py-8">
+            <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
           </div>
         )}
       </main>

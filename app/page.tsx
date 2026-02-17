@@ -7,7 +7,8 @@ import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { products } from '@/lib/products'
 import { ProductCard } from '@/components/product-card'
-import { ArrowRight, MapPin, Sparkles, Users, Globe } from 'lucide-react'
+import { Hero } from '@/components/hero'
+import { ArrowRight, MapPin, Sparkles, Users, Globe, Leaf, ShieldCheck } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Premium Sustainable Home Textiles | TerraLume Living',
@@ -23,53 +24,39 @@ export default function Home() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative h-[80vh] w-full overflow-hidden">
-        <Image
-          src="/hero.jpg"
-          alt="TerraLume Living - Premium Sustainable Home Textiles for Modern Living"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 flex items-center justify-center text-center">
-          <div className="max-w-3xl px-4 space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white tracking-tight">
-              Premium Sustainable Home Textiles
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 font-light max-w-xl mx-auto">
-              Experience the perfect balance of comfort and style. Our handcrafted textiles use exclusive organic materials to bring lasting beauty and wellness to your modern home.
-            </p>
-            <div className="pt-4">
-              <Link href="/catalog">
-                <Button size="lg" className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 border-none text-md px-8 py-6 h-auto shadow-xl">
-                  Upgrade Your Living Space
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Trust Bar */}
       <section className="py-12 bg-secondary/20 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="flex flex-col items-center gap-2">
-              <MapPin className="w-6 h-6 text-primary/70" />
-              <span className="text-sm font-medium text-foreground/80">Designed in Europe</span>
+            <div className="flex flex-col items-center gap-3">
+              <Leaf className="w-6 h-6 text-primary/70" />
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-foreground">100% Organic</span>
+                <span className="text-xs text-muted-foreground">Certified sustainable materials</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-2">
-              <Sparkles className="w-6 h-6 text-primary/70" />
-              <span className="text-sm font-medium text-foreground/80">Premium Materials</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-3">
               <Users className="w-6 h-6 text-primary/70" />
-              <span className="text-sm font-medium text-foreground/80">Ethically Produced</span>
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-foreground">Ethically Crafted</span>
+                <span className="text-xs text-muted-foreground">Fair wages & safe conditions</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-primary/70" />
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-foreground">Quality Guarantee</span>
+                <span className="text-xs text-muted-foreground">30-day return policy</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-3">
               <Globe className="w-6 h-6 text-primary/70" />
-              <span className="text-sm font-medium text-foreground/80">Worldwide Shipping</span>
+              <div className="flex flex-col">
+                <span className="text-sm font-medium text-foreground">Worldwide Shipping</span>
+                <span className="text-xs text-muted-foreground">Free on orders over $150</span>
+              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { Instagram } from 'lucide-react'
 import './globals.css'
 import { ScreenshotPrevention } from '@/components/screenshot-prevention'
+import { LanguageProvider } from '@/components/language-provider'
 
 const geist = Geist({ 
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.variable} ${playfair.variable} font-sans antialiased`}>
+        <LanguageProvider>
         {children}
         <ScreenshotPrevention />
         <div className="fixed bottom-6 right-6 z-50 group">
@@ -53,6 +55,7 @@ export default function RootLayout({
           </a>
         </div>
         <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   )

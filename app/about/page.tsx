@@ -151,11 +151,7 @@ export default function AboutPage() {
       <section className="py-12 bg-background border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2 flex flex-col items-center">
-              <MapPin className="w-8 h-8 text-primary/60 mb-2" />
-              <h4 className="font-medium text-foreground">Designed in Europe</h4>
-              <p className="text-xs text-muted-foreground font-light">Timeless aesthetics rooted in tradition.</p>
-            </div>
+            
             <div className="space-y-2 flex flex-col items-center">
               <Users className="w-8 h-8 text-primary/60 mb-2" />
               <h4 className="font-medium text-foreground">Ethically Manufactured</h4>
