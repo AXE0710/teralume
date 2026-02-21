@@ -26,7 +26,7 @@ export function generateMetadata({ params }: ProductPageProps): Metadata {
   if (!product) return { title: 'Product Not Found' }
   
   return {
-    title: `${product.name} | TerraLume Living`,
+    title: `${product.name} | Terralume Living`,
     description: product.description,
   }
 }

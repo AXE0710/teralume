@@ -1,9 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, ShieldCheck, Lock, Award } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/components/language-provider'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const { t } = useLanguage()
 
   return (
     <footer className="bg-foreground/5 border-t border-border">
@@ -16,10 +20,10 @@ export function Footer() {
               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">T</span>
               </div>
-              <span className="text-lg font-serif font-semibold text-foreground">Teralume</span>
+              <span className="text-lg font-serif font-semibold text-foreground globalseo-exclude uppercase tracking-widest">Terralume</span>
             </Link>
             <p className="text-sm text-foreground/70">
-              Premium home textiles crafted with care and sustainable practices.
+              {t('footerBrandDesc')}
             </p>
             <div className="flex items-center gap-4 pt-2">
               <div className="flex items-center gap-1 text-foreground/60" title="Secure Payment">
@@ -36,29 +40,31 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Navigation</h3>
+            <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('navTitle')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm text-foreground/70 hover:text-primary transition-colors">
-                  Home
+                <Link href="/" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('navHome')}
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors">
-                  Shop
+                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('navShop')}
                 </Link>
-                <Link href="/about" className="text-sm text-foreground/70 hover:text-primary transition-colors">
-                  About
+                </li>
+              <li>
+                <Link href="/about" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('navAbout')}
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors">
-                  Catalog
+                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('navCatalog')}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-foreground/70 hover:text-primary transition-colors">
-                  Contact
+                <Link href="/contact" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('navContact')}
                 </Link>
               </li>
             </ul>
@@ -66,32 +72,32 @@ export function Footer() {
 
           {/* Categories */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Categories</h3>
+            <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('catTitle')}</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-sm text-foreground/70">Cushions</span>
+                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catCushions')}</span>
               </li>
               <li>
-                <span className="text-sm text-foreground/70">Kitchen Cloths</span>
+                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catKitchen')}</span>
               </li>
               <li>
-                <span className="text-sm text-foreground/70">Living Room</span>
+                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catLiving')}</span>
               </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Get in Touch</h3>
+            <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('contactTitle')}</h3>
             <div className="space-y-3">
               <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('emailPlaceholder')}
                   className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
-                <Button size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto">
-                  Join Now
+                <Button size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest">
+                  {t('joinBtn')}
                 </Button>
               </div>
             </div>
@@ -104,17 +110,17 @@ export function Footer() {
             {/* Copyright */}
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
               <p className="text-xs text-foreground/60">
-                © {currentYear} Teralume Living. All rights reserved.
+                © {currentYear} Terralume Living. {t('copyright')}
               </p>
               <div className="flex items-center gap-6">
-                <Link href="/privacy" className="text-xs text-foreground/60 hover:text-primary transition-colors">
-                  Privacy Policy
+                <Link href="/privacy" className="text-xs text-foreground/60 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('privacy')}
                 </Link>
-                 <Link href="/terms" className="text-xs text-foreground/60 hover:text-primary transition-colors">
-                  Terms & Conditions
+                 <Link href="/terms" className="text-xs text-foreground/60 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('terms')}
                 </Link>
-                <Link href="/imprint" className="text-xs text-foreground/60 hover:text-primary transition-colors">
-                  Legal Notice
+                <Link href="/imprint" className="text-xs text-foreground/60 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('legal')}
                 </Link>
               </div>
             </div>

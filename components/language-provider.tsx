@@ -1,9 +1,14 @@
-// c:\code\teralume-living-website\components\language-provider.tsx
+// c:\code\Terralume-living-website\components\language-provider.tsx
+
 'use client'
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
+// We import the generated files. 
+// Note: These files must exist. Run 'node bulk-translate.mjs' first.
+import enMessages from '../messages/en.json'
+import deMessages from '../messages/de.json'
 
-type Language = 'en' | 'es' | 'fr' | 'de'
+type Language = 'en' | 'de'
 
 interface LanguageContextType {
   language: Language
@@ -12,26 +17,8 @@ interface LanguageContextType {
 }
 
 const translations: Record<Language, Record<string, string>> = {
-  en: {
-    heroTitle: "Premium Sustainable Home Textiles",
-    heroSubtitle: "Experience the perfect balance of comfort and style. Our handcrafted textiles use exclusive organic materials to bring lasting beauty and wellness to your modern home.",
-    cta: "Upgrade Your Living Space",
-  },
-  es: {
-    heroTitle: "Textiles para el Hogar Premium y Sostenibles",
-    heroSubtitle: "Experimenta el equilibrio perfecto entre comodidad y estilo. Nuestros textiles artesanales utilizan materiales orgánicos exclusivos para brindar belleza y bienestar duraderos a tu hogar moderno.",
-    cta: "Mejora tu Espacio Vital",
-  },
-  fr: {
-    heroTitle: "Textiles de Maison Premium et Durables",
-    heroSubtitle: "Découvrez l'équilibre parfait entre confort et style. Nos textiles artisanaux utilisent des matériaux organiques exclusifs pour apporter beauté et bien-être durables à votre maison moderne.",
-    cta: "Améliorez Votre Espace de Vie",
-  },
-  de: {
-    heroTitle: "Hochwertige nachhaltige Heimtextilien",
-    heroSubtitle: "Erleben Sie die perfekte Balance aus Komfort und Stil. Unsere handgefertigten Textilien verwenden exklusive organische Materialien, um dauerhafte Schönheit und Wohlbefinden in Ihr modernes Zuhause zu bringen.",
-    cta: "Werten Sie Ihren Wohnraum auf",
-  }
+  en: enMessages,
+  de: deMessages
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -39,40 +26,35 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('en')
 
+  // Optional: Auto-detect language on mount
   useEffect(() => {
-    // Detect location based on IP
-    const detectLocation = async () => {
-      try {
-        // Using ipapi.co for demo purposes. For production, consider a paid service or Vercel Geolocation headers.
-        const response = await fetch('https://ipapi.co/json/')
-        const data = await response.json()
-        const countryCode = data.country_code
-        
-        // Map country codes to languages
-        if (['ES', 'MX', 'AR', 'CO', 'CL', 'PE'].includes(countryCode)) {
-          setLanguage('es')
-        } else if (['FR', 'BE', 'CH', 'SN'].includes(countryCode)) {
-          setLanguage('fr')
-        } else if (['DE', 'AT'].includes(countryCode)) {
-          setLanguage('de')
-        } else {
-          setLanguage('en')
-        }
-      } catch (error) {
-        console.error('Failed to detect location:', error)
-        // Default to English if detection fails
+    const savedLang = localStorage.getItem('language') as Language
+    if (savedLang && (savedLang === 'en' || savedLang === 'de')) {
+      setLanguage(savedLang)
+      console.log(`[Terralume] Loaded saved language preference: ${savedLang}`)
+    } else {
+      const browserLang = navigator.language.split('-')[0]
+      if (browserLang === 'de') {
+        setLanguage('de')
+        console.log('[Terralume] Auto-detected German language from browser')
+      } else {
+        console.log(`[Terralume] Auto-detected language: ${browserLang} (Defaulting to English)`)
       }
     }
-
-    detectLocation()
   }, [])
 
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang)
+    localStorage.setItem('language', lang)
+  }
+
   const t = (key: string) => {
+    // Fallback to English if translation is missing, then to the key itself
     return translations[language][key] || translations['en'][key] || key
   }
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   )

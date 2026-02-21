@@ -18,10 +18,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | TerraLume Living',
-    default: 'TerraLume Living - Premium Sustainable Home Textiles',
+    template: '%s | Terralume Living',
+    default: 'Terralume Living - Premium Sustainable Home Textiles',
   },
-  description: 'Discover TerraLume Living\'s collection of handcrafted, organic home textiles. Elevate your space with sustainable luxury, designed for comfort and modern living.',
+  description: 'Discover Terralume Living\'s collection of handcrafted, organic home textiles. Elevate your space with sustainable luxury, designed for comfort and modern living.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
@@ -45,7 +45,7 @@ export default function RootLayout({
             Message on Instagram
           </span>
           <a
-            href="https://www.instagram.com/terralumeliving/"
+            href="https://www.instagram.com/Terralumeliving/"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-black text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center hover:bg-gray-800"

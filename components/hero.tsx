@@ -1,4 +1,4 @@
-// c:\code\teralume-living-website\components\hero.tsx
+// c:\code\Terralume-living-website\components\hero.tsx
 'use client'
 
 import Link from "next/link"
@@ -13,7 +13,7 @@ export function Hero() {
     <section className="relative h-[80vh] w-full overflow-hidden">
       <Image
         src="/hero.jpg"
-        alt="TerraLume Living - Premium Sustainable Home Textiles for Modern Living"
+        alt="Terralume Living - Premium Sustainable Home Textiles for Modern Living"
         fill
         className="object-cover"
         priority
@@ -29,7 +29,7 @@ export function Hero() {
           </p>
           <div className="pt-4">
             <Link href="/catalog">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 border-none text-md px-8 py-6 h-auto shadow-xl">
+              <Button size="lg" className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 border-none text-md px-8 py-6 h-auto shadow-xl uppercase tracking-widest">
                 {t('cta')}
               </Button>
             </Link>

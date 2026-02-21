@@ -89,7 +89,7 @@ function ContactContent() {
               {/* Contact Details */}
               <div className="space-y-6">
                 <a
-                  href="mailto:hello@teralumeliving.com"
+                  href="mailto:hello@Terralumeliving.com"
                   className="flex items-start gap-4 p-6 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -97,7 +97,7 @@ function ContactContent() {
                   </div>
                   <div className="flex flex-col gap-1">
                     <h3 className="font-semibold text-foreground">Email Us</h3>
-                    <p className="text-sm text-muted-foreground">hello@teralumeliving.com</p>
+                    <p className="text-sm text-muted-foreground">hello@Terralumeliving.com</p>
                     <p className="text-xs text-muted-foreground">We'll respond within 24 hours</p>
                   </div>
                 </a>
@@ -345,7 +345,7 @@ function ContactContent() {
                 <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold">
                   T
                 </div>
-                <span className="font-semibold">Teralume Living</span>
+                <span className="font-semibold">Terralume Living</span>
               </div>
               <p className="text-sm text-background/70">
                 Crafting beautiful, sustainable home textiles.

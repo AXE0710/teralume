@@ -1,4 +1,4 @@
-// c:\code\teralume-living-website\app\kids\page.tsx
+// c:\code\Terralume-living-website\app\kids\page.tsx
 import React from "react"
 import type { Metadata } from 'next'
 import Image from "next/image"
@@ -8,7 +8,7 @@ import { ProductCard } from '@/components/product-card'
 import kidsProducts from "@/lib/kids.json"
 
 export const metadata: Metadata = {
-  title: 'TerraLume Mini | Sustainable Kids Textiles',
+  title: 'Terralume Mini | Sustainable Kids Textiles',
   description: 'Organic, gentle, and playful textiles for the little ones.',
 }
 
@@ -23,7 +23,7 @@ export default function KidsPage() {
       <section className="relative h-[60vh] w-full overflow-hidden">
         <Image
           src="/hero.jpg"
-          alt="TerraLume Mini"
+          alt="Terralume Mini"
           fill
           className="object-cover"
           priority
@@ -32,7 +32,7 @@ export default function KidsPage() {
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div className="max-w-3xl px-4 space-y-6">
             <h1 className="text-4xl md:text-6xl font-serif font-medium text-white tracking-tight">
-              TerraLume Mini
+              Terralume Mini
             </h1>
             <p className="text-lg md:text-xl text-white/90 font-light max-w-xl mx-auto">
               Gentle on skin, kind to the planet. Organic textiles for your little ones.

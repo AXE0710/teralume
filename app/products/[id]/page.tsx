@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params
   const product = products.find((p) => p.id === id)
   return {
-    title: product ? `${product.name} | Teralume Living` : 'Product Not Found',
-    description: product?.description || 'Discover premium home textiles at Teralume Living',
+    title: product ? `${product.name} | Terralume Living` : 'Product Not Found',
+    description: product?.description || 'Discover premium home textiles at Terralume Living',
   }
 }
 

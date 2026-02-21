@@ -1,8 +1,11 @@
+'use client'
+
 import { Product } from '@/lib/products'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ShoppingBag } from 'lucide-react'
+import { useLanguage } from '@/components/language-provider'
 
 interface ProductCardProps {
   product: Product
@@ -11,6 +14,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, badge, benefit }: ProductCardProps) {
+  const { t } = useLanguage()
+
   return (
     <div className="group rounded-lg overflow-hidden border border-border bg-card hover:shadow-lg transition-all duration-300 h-full flex flex-col">
       {/* Product Image */}
@@ -32,12 +37,12 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
       <div className="p-4 flex flex-col flex-grow">
         <Link href={`/products/${product.id}`}>
           <h3 className="font-semibold text-foreground text-sm line-clamp-2 mb-1 group-hover:text-primary transition-colors">
-            {product.name}
+            {t(`prod_name_${product.id}`) || product.name}
           </h3>
         </Link>
         
         <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
-          {benefit || product.description}
+          {benefit || t(`prod_desc_${product.id}`) || product.description}
         </p>
 
         {/* Colors */}
@@ -58,11 +63,11 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
 
         {/* Price and Action */}
         <div className="mt-auto flex items-center justify-between pt-2">
-          <span className="text-lg font-bold text-primary">
+          <span className="text-lg font-bold text-primary globalseo-exclude">
             ${product.price}
           </span>
           <Link href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}>
-            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform">
+            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform uppercase tracking-wider">
               <ShoppingBag className="w-3.5 h-3.5" />
               Buy
             </Button>

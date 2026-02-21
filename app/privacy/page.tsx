@@ -1,4 +1,4 @@
-// c:\code\teralume-living-website\app\privacy\page.tsx
+// c:\code\Terralume-living-website\app\privacy\page.tsx
 import React from "react"
 import type { Metadata } from 'next'
 import { Navigation } from '@/components/navigation'
@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Privacy Policy for TerraLume Living.',
+  description: 'Privacy Policy for Terralume Living.',
 }
 
 export default function PrivacyPage() {
@@ -20,7 +20,7 @@ export default function PrivacyPage() {
             
             <section className="space-y-3">
                 <h2 className="text-xl font-medium text-foreground">1. Introduction</h2>
-                <p>Welcome to TerraLume Living. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
+                <p>Welcome to Terralume Living. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>
             </section>
 
             <section className="space-y-3">

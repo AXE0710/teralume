@@ -7,9 +7,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { useLanguage } from '@/components/language-provider'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/40">
@@ -19,7 +21,7 @@ export function Navigation() {
           <Link href="/" className="flex items-center gap-2 group">
             <Image
               src="/logo.png"
-              alt="TerraLume Living"
+              alt="Terralume Living"
               width={80}
               height={40}
               className="h-18 w-auto object-contain"
@@ -29,10 +31,10 @@ export function Navigation() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link href="/" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Home
+              {t('navHome')}
             </Link>
             <Link href="/catalog" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              Catalogue
+              {t('navCatalog')}
             </Link>
             <Link href="/kids" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               KIDS
@@ -41,11 +43,28 @@ export function Navigation() {
               BEST SELLERS
             </Link>
             <Link href="/about" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              ABOUT
+              {t('navAbout')}
             </Link>
             <Link href="/contact" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              CONTACT
+              {t('navContact')}
             </Link>
+
+            {/* Language Switcher */}
+            <div className="flex items-center gap-2 border-l border-border/50 pl-6">
+              <button 
+                onClick={() => setLanguage('en')}
+                className={`text-xs transition-colors uppercase tracking-widest ${language === 'en' ? 'font-bold text-primary' : 'font-light text-foreground/70 hover:text-primary'}`}
+              >
+                EN
+              </button>
+              <span className="text-xs text-border/50">|</span>
+              <button 
+                onClick={() => setLanguage('de')}
+                className={`text-xs transition-colors uppercase tracking-widest ${language === 'de' ? 'font-bold text-primary' : 'font-light text-foreground/70 hover:text-primary'}`}
+              >
+                DE
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -61,24 +80,40 @@ export function Navigation() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-border">
-            <Link href="/" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Home
+            <Link href="/" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
+              {t('navHome')}
             </Link>
-            <Link href="/catalog" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              Catalogue
+            <Link href="/catalog" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
+              {t('navCatalog')}
             </Link>
-            <Link href="/kids" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+            <Link href="/kids" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
               KIDS
             </Link>
-            <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
+            <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
               BEST SELLERS
             </Link>
-            <Link href="/about" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              ABOUT
+            <Link href="/about" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
+              {t('navAbout')}
             </Link>
-            <Link href="/contact" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary">
-              CONTACT
+            <Link href="/contact" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
+              {t('navContact')}
             </Link>
+            
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center gap-6 px-4 py-4 border-t border-border/50 mt-2">
+              <button 
+                onClick={() => setLanguage('en')}
+                className={`text-sm transition-colors uppercase tracking-widest ${language === 'en' ? 'font-bold text-primary' : 'font-medium text-foreground/70'}`}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => setLanguage('de')}
+                className={`text-sm transition-colors uppercase tracking-widest ${language === 'de' ? 'font-bold text-primary' : 'font-medium text-foreground/70'}`}
+              >
+                DE
+              </button>
+            </div>
           </div>
         )}
       </div>

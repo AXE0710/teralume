@@ -1,4 +1,4 @@
-// c:\code\teralume-living-website\app\imprint\page.tsx
+// c:\code\Terralume-living-website\app\imprint\page.tsx
 import React from "react"
 import type { Metadata } from 'next'
 import { Navigation } from '@/components/navigation'
@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Legal Notice (Imprint)',
-  description: 'Legal Notice and Imprint for TerraLume Living.',
+  description: 'Legal Notice and Imprint for Terralume Living.',
 }
 
 export default function ImprintPage() {
@@ -18,7 +18,7 @@ export default function ImprintPage() {
         <div className="space-y-8 text-foreground/80">
             <section className="space-y-2">
                 <h2 className="text-xl font-medium text-foreground">Company Information</h2>
-                <p>TerraLume Living GmbH<br />
+                <p>Terralume Living GmbH<br />
                 123 Design Street<br />
                 Creative City, CC 12345<br />
                 Country</p>
@@ -27,7 +27,7 @@ export default function ImprintPage() {
             <section className="space-y-2">
                 <h2 className="text-xl font-medium text-foreground">Contact</h2>
                 <p>Phone: +1 (555) 123-4567<br />
-                Email: hello@teralume.com</p>
+                Email: hello@Terralume.com</p>
             </section>
 
             <section className="space-y-2">

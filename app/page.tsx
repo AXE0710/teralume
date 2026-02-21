@@ -11,7 +11,7 @@ import { Hero } from '@/components/hero'
 import { ArrowRight, MapPin, Sparkles, Users, Globe, Leaf, ShieldCheck } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Premium Sustainable Home Textiles | TerraLume Living',
+  title: 'Premium Sustainable Home Textiles | Terralume Living',
   description: 'Shop our exclusive collection of organic cotton and linen home textiles. Handcrafted for comfort, style, and sustainability. Free shipping on orders over $150.',
 }
 
@@ -33,28 +33,28 @@ export default function Home() {
             <div className="flex flex-col items-center gap-3">
               <Leaf className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground">100% Organic</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider">100% Organic</span>
                 <span className="text-xs text-muted-foreground">Certified sustainable materials</span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">
               <Users className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground">Ethically Crafted</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider">Ethically Crafted</span>
                 <span className="text-xs text-muted-foreground">Fair wages & safe conditions</span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">
               <ShieldCheck className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground">Quality Guarantee</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider">Quality Guarantee</span>
                 <span className="text-xs text-muted-foreground">30-day return policy</span>
               </div>
             </div>
             <div className="flex flex-col items-center gap-3">
               <Globe className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground">Worldwide Shipping</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider">Worldwide Shipping</span>
                 <span className="text-xs text-muted-foreground">Free on orders over $150</span>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function Home() {
             <h2 className="text-3xl font-serif text-foreground mb-2">Curated for Effortless Living</h2>
             <p className="text-muted-foreground">Thoughtfully designed pieces that blend seamlessly into modern interiors.</p>
           </div>
-          <Link href="/catalog" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group">
+          <Link href="/catalog" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group uppercase tracking-widest">
             Explore All Designs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
         
         <div className="mt-12 text-center md:hidden">
           <Link href="/catalog">
-            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-white transition-colors uppercase tracking-widest">
               Explore All Designs
             </Button>
           </Link>
@@ -109,16 +109,16 @@ export default function Home() {
              <div className="space-y-6">
                <h2 className="text-3xl md:text-4xl font-serif text-foreground">Crafted with Intention</h2>
                <p className="text-lg text-muted-foreground font-light leading-relaxed">
-                 Every TerraLume piece is created with a focus on material quality, tactile comfort, and timeless design. 
+                 Every Terralume piece is created with a focus on material quality, tactile comfort, and timeless design. 
                  We believe true luxury is felt — in the texture, the weight, and the way a space comes together.
                </p>
                
                <div className="flex flex-col sm:flex-row gap-4 pt-2">
                  <Link href="/about">
-                   <Button variant="outline" size="lg" className="w-full sm:w-auto">Our Story</Button>
+                   <Button variant="outline" size="lg" className="w-full sm:w-auto uppercase tracking-widest">Our Story</Button>
                  </Link>
                  <Link href="/catalog">
-                   <Button size="lg" className="w-full sm:w-auto shadow-md hover:scale-105 transition-all duration-300">Shop Sustainable</Button>
+                   <Button size="lg" className="w-full sm:w-auto shadow-md hover:scale-105 transition-all duration-300 uppercase tracking-widest">Shop Sustainable</Button>
                  </Link>
                </div>
              </div>
@@ -131,7 +131,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-serif text-foreground">Designed to Elevate Everyday Living</h2>
           <p className="text-lg text-muted-foreground font-light leading-relaxed">
-            TerraLume was founded with a simple idea: to create home textiles that feel calm, refined, and enduring.
+            Terralume was founded with a simple idea: to create home textiles that feel calm, refined, and enduring.
             Inspired by natural tones and modern interiors, our collections are designed to bring balance and warmth into everyday spaces.
           </p>
           <p className="text-lg text-muted-foreground font-light leading-relaxed">
@@ -139,7 +139,7 @@ export default function Home() {
           </p>
           <div className="pt-4">
             <Link href="/about">
-              <Button variant="outline" size="lg">Read Our Story</Button>
+              <Button variant="outline" size="lg" className="uppercase tracking-widest">Read Our Story</Button>
             </Link>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function Home() {
             <h2 className="text-3xl font-serif text-foreground mb-2">Best Sellers</h2>
             <p className="text-muted-foreground">Our most loved pieces, chosen by you.</p>
           </div>
-          <Link href="/catalog?collection=best-sellers" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group">
+          <Link href="/catalog?collection=best-sellers" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group uppercase tracking-widest">
             View All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -177,7 +177,7 @@ export default function Home() {
               placeholder="Enter your email" 
               className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
             />
-            <Button size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90">
+            <Button size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 uppercase tracking-widest">
               Join Now
             </Button>
           </div>
