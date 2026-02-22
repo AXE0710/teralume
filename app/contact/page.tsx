@@ -1,409 +1,134 @@
 'use client'
 
-import React from "react"
-
+import React, { useState } from "react"
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { useState, Suspense, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useLanguage } from '@/components/language-provider'
+import { Mail, MapPin, Clock } from 'lucide-react'
 
-function ContactContent() {
-  const searchParams = useSearchParams()
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    inquiryType: 'custom',
-    productType: '',
-    dimensions: '',
-    budget: '',
-    message: '',
-  })
+export default function ContactPage() {
+  const { t } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
-
-  useEffect(() => {
-    const productParam = searchParams.get('product')
-    const intentParam = searchParams.get('intent')
-
-    if (productParam) {
-      let messageText = `I'm interested in the ${productParam}. Could you please provide more details?`
-      let type = 'custom'
-
-      if (intentParam === 'buy') {
-        messageText = `I would like to purchase the ${productParam}. Please send me payment details and shipping information.`
-        type = 'general' // Switch to general to hide custom dimensions fields for direct buys
-      }
-
-      setFormData(prev => ({
-        ...prev,
-        inquiryType: type,
-        message: messageText
-      }))
-    }
-  }, [searchParams])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', inquiryType: 'custom', productType: '', dimensions: '', budget: '', message: '' })
-    }, 3000)
+    // Simulate form submission
+    setTimeout(() => setSubmitted(true), 1000)
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
-      {/* Header */}
-      <section className="border-b border-border bg-secondary/3 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-semibold text-foreground mb-2">Custom Requests</h1>
-          <p className="text-muted-foreground">
-            Looking for something unique? Tell us about your dream textile piece, and we'll craft it for you.
-          </p>
-        </div>
-      </section>
+      <main className="flex-grow py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">{t('contactPageTitle')}</h1>
+            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+              {t('contactPageSubtitle')}
+            </p>
+          </div>
 
-      <section className="py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+            {/* Contact Info */}
             <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-semibold text-foreground mb-8">Contact Information</h2>
-                <p className="text-muted-foreground mb-8">
-                  Have a question about our products or need assistance? Our team is here to help.
-                </p>
-              </div>
-
-              {/* Contact Details */}
-              <div className="space-y-6">
-                <a
-                  href="mailto:hello@Terralumeliving.com"
-                  className="flex items-start gap-4 p-6 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-semibold text-foreground">Email Us</h3>
-                    <p className="text-sm text-muted-foreground">hello@Terralumeliving.com</p>
-                    <p className="text-xs text-muted-foreground">We'll respond within 24 hours</p>
-                  </div>
-                </a>
-
-                <a
-                  href="tel:+1-555-123-4567"
-                  className="flex items-start gap-4 p-6 rounded-lg border border-border hover:bg-muted/50 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-semibold text-foreground">Call Us</h3>
-                    <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-xs text-muted-foreground">Monday - Friday, 9am - 6pm EST</p>
-                  </div>
-                </a>
-
-                <div className="flex items-start gap-4 p-6 rounded-lg border border-border">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-semibold text-foreground">Visit Us</h3>
-                    <p className="text-sm text-muted-foreground">
-                      123 Luxury Lane<br />
-                      New York, NY 10001
-                    </p>
-                    <p className="text-xs text-muted-foreground">By appointment only</p>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
+                  <Mail className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-foreground mb-1">{t('contactEmail')}</h3>
+                  <p className="text-muted-foreground font-light">hello@terralume-living.com</p>
+                  <p className="text-muted-foreground font-light">support@terralume-living.com</p>
                 </div>
               </div>
 
-              {/* Social Links */}
-              <div className="pt-8 border-t border-border">
-                <h3 className="font-semibold text-foreground mb-4">Follow Us</h3>
-                <div className="flex gap-3">
-                  {[
-                    { name: 'Facebook', url: '#' },
-                    { name: 'Instagram', url: '#' },
-                    { name: 'Twitter', url: '#' },
-                    { name: 'LinkedIn', url: '#' },
-                  ].map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      className="w-10 h-10 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-colors font-medium text-sm"
-                    >
-                      {social.name.charAt(0)}
-                    </a>
-                  ))}
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-foreground mb-1">{t('contactAddress')}</h3>
+                  <p className="text-muted-foreground font-light">123 Sustainable Way</p>
+                  <p className="text-muted-foreground font-light">Eco District, Berlin 10115</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
+                  <Clock className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-foreground mb-1">{t('contactHours')}</h3>
+                  <p className="text-muted-foreground font-light">{t('contactHoursDesc')}</p>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div>
-              <div className="rounded-lg border border-border bg-card p-8">
-                <h2 className="text-2xl font-semibold text-foreground mb-6">Request a Custom Piece</h2>
-
-                {submitted && (
-                  <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/20 text-primary">
-                    <p className="font-medium">Thank you! Your message has been sent successfully.</p>
-                    <p className="text-sm text-primary/80 mt-1">We'll get back to you soon.</p>
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+              {submitted ? (
+                <div className="h-full flex flex-col items-center justify-center text-center py-12">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Name */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">
-                      Full Name
+                  <h3 className="text-2xl font-serif text-foreground mb-2">{t('contactSuccess')}</h3>
+                  <Button variant="outline" onClick={() => setSubmitted(false)} className="mt-4 font-bold">
+                    Send another
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-foreground uppercase tracking-wider">
+                      {t('contactName')}
                     </label>
                     <input
-                      type="text"
                       id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
+                      type="text"
                       required
-                      className="px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="John Doe"
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     />
                   </div>
-
-                  {/* Email */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email Address
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-foreground uppercase tracking-wider">
+                      {t('contactEmail')}
                     </label>
                     <input
-                      type="email"
                       id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
+                      type="email"
                       required
-                      className="px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="you@example.com"
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     />
                   </div>
 
-                  {/* Inquiry Type */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="inquiryType" className="text-sm font-medium text-foreground">
-                      Inquiry Type
-                    </label>
-                    <select
-                      id="inquiryType"
-                      name="inquiryType"
-                      value={formData.inquiryType}
-                      onChange={handleChange}
-                      required
-                      className="px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    >
-                      <option value="custom">Custom Product Request</option>
-                      <option value="general">General Inquiry</option>
-                      <option value="wholesale">Wholesale / Trade</option>
-                    </select>
-                  </div>
-
-                  {formData.inquiryType === 'custom' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {/* Product Type */}
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="productType" className="text-sm font-medium text-foreground">
-                          Product Type
-                        </label>
-                        <select
-                          id="productType"
-                          name="productType"
-                          value={formData.productType}
-                          onChange={handleChange}
-                          className="px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                        >
-                          <option value="">Select type...</option>
-                          <option value="cushion">Cushion</option>
-                          <option value="blanket">Throw / Blanket</option>
-                          <option value="table-linen">Table Linen</option>
-                          <option value="curtains">Curtains</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-
-                      {/* Dimensions */}
-                      <div className="flex flex-col gap-2">
-                        <label htmlFor="dimensions" className="text-sm font-medium text-foreground">
-                          Dimensions (approx)
-                        </label>
-                        <input
-                          type="text"
-                          id="dimensions"
-                          name="dimensions"
-                          value={formData.dimensions}
-                          onChange={handleChange}
-                          className="px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="e.g. 20x20 inches"
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Message */}
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="message" className="text-sm font-medium text-foreground">
-                      {formData.inquiryType === 'custom' ? 'Describe your vision (colors, materials, style)' : 'Message'}
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-sm font-medium text-foreground uppercase tracking-wider">
+                      {t('contactMessage')}
                     </label>
                     <textarea
                       id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
                       required
-                      rows={6}
-                      className="px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-                      placeholder="Tell us how we can help..."
+                      rows={5}
+                      className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
                     />
                   </div>
 
-                  {/* Submit Button */}
-                  <Button type="submit" size="lg" className="w-full gap-2">
-                    <Send className="w-4 h-4" />
-                    {formData.inquiryType === 'custom' ? 'Submit Request' : 'Send Message'}
+                  <Button type="submit" size="lg" className="w-full uppercase tracking-widest font-bold">
+                    {t('contactSend')}
                   </Button>
-
-                  <p className="text-xs text-muted-foreground text-center pt-2">
-                    We'll review your request and get back to you within 24-48 hours.
-                  </p>
                 </form>
-              </div>
+              )}
             </div>
           </div>
         </div>
-      </section>
+      </main>
 
-      {/* FAQ Section */}
-      <section className="py-16 lg:py-24 bg-secondary/3 border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold text-foreground mb-12 text-center">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                q: 'Do you offer international shipping?',
-                a: 'Yes, we ship worldwide! Shipping times and costs vary by location.',
-              },
-              {
-                q: 'What is your return policy?',
-                a: '30-day returns on all unworn, unwashed items with original tags attached.',
-              },
-              {
-                q: 'Are your products sustainable?',
-                a: 'Yes! All our products are made from eco-friendly, sustainable materials.',
-              },
-              {
-                q: 'How should I care for my textiles?',
-                a: 'Each product comes with detailed care instructions. Most can be gently machine washed.',
-              },
-              {
-                q: 'Do you offer bulk discounts?',
-                a: 'Yes, we offer special pricing for large orders. Contact us for a quote.',
-              },
-              {
-                q: 'Can I customize products?',
-                a: 'We offer customization for orders over 50 units. Please reach out for details.',
-              },
-            ].map((faq, idx) => (
-              <div key={idx} className="p-6 rounded-lg border border-border bg-background">
-                <h3 className="font-semibold text-foreground mb-3">{faq.q}</h3>
-                <p className="text-sm text-muted-foreground">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-xs font-bold">
-                  T
-                </div>
-                <span className="font-semibold">Terralume Living</span>
-              </div>
-              <p className="text-sm text-background/70">
-                Crafting beautiful, sustainable home textiles.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h4 className="font-semibold text-sm">Shop</h4>
-              <a href="/catalog" className="text-sm text-background/70 hover:text-background transition">
-                All Products
-              </a>
-              <a href="/catalog?category=cushions" className="text-sm text-background/70 hover:text-background transition">
-                Cushions
-              </a>
-              <a href="/catalog?category=kitchen" className="text-sm text-background/70 hover:text-background transition">
-                Kitchen Cloths
-              </a>
-              <a href="/catalog?category=living-room" className="text-sm text-background/70 hover:text-background transition">
-                Living Room
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h4 className="font-semibold text-sm">Company</h4>
-              <a href="#" className="text-sm text-background/70 hover:text-background transition">
-                About Us
-              </a>
-              <a href="#" className="text-sm text-background/70 hover:text-background transition">
-                Sustainability
-              </a>
-              <a href="/contact" className="text-sm text-background/70 hover:text-background transition">
-                Contact
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h4 className="font-semibold text-sm">Legal</h4>
-              <a href="#" className="text-sm text-background/70 hover:text-background transition">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-background/70 hover:text-background transition">
-                Terms of Service
-              </a>
-              <a href="#" className="text-sm text-background/70 hover:text-background transition">
-                Returns
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
-  )
-}
-
-export default function ContactPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ContactContent />
-    </Suspense>
   )
 }

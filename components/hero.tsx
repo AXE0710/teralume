@@ -29,7 +29,7 @@ export function Hero() {
           </p>
           <div className="pt-4">
             <Link href="/catalog">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 border-none text-md px-8 py-6 h-auto shadow-xl uppercase tracking-widest">
+              <Button size="lg" className="bg-white text-black hover:bg-gray-100 hover:scale-105 transition-all duration-300 border-none text-md px-8 py-6 h-auto shadow-xl uppercase tracking-widest font-bold">
                 {t('cta')}
               </Button>
             </Link>

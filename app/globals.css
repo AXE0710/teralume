@@ -122,4 +122,10 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  @media (pointer: fine) {
+    body, a, button, [role="button"], input, select, textarea {
+      cursor: none !important;
+    }
+  }
 }

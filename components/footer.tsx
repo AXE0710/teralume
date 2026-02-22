@@ -26,13 +26,13 @@ export function Footer() {
               {t('footerBrandDesc')}
             </p>
             <div className="flex items-center gap-4 pt-2">
-              <div className="flex items-center gap-1 text-foreground/60" title="Secure Payment">
+              <div className="flex items-center gap-1 text-foreground/60" title={t('securePayment')}>
                 <Lock className="w-4 h-4" />
               </div>
-              <div className="flex items-center gap-1 text-foreground/60" title="Quality Guarantee">
+              <div className="flex items-center gap-1 text-foreground/60" title={t('qualityGuarantee')}>
                 <Award className="w-4 h-4" />
               </div>
-              <div className="flex items-center gap-1 text-foreground/60" title="Secure Shopping">
+              <div className="flex items-center gap-1 text-foreground/60" title={t('secureShopping')}>
                 <ShieldCheck className="w-4 h-4" />
               </div>
             </div>
@@ -96,7 +96,7 @@ export function Footer() {
                   placeholder={t('emailPlaceholder')}
                   className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
-                <Button size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest">
+                <Button size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest font-bold">
                   {t('joinBtn')}
                 </Button>
               </div>

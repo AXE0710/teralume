@@ -37,12 +37,16 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
       <div className="p-4 flex flex-col flex-grow">
         <Link href={`/products/${product.id}`}>
           <h3 className="font-semibold text-foreground text-sm line-clamp-2 mb-1 group-hover:text-primary transition-colors">
-            {t(`prod_name_${product.id}`) || product.name}
+            {(product as any).category === 'kids'
+              ? (t(`kid_name_${product.id}`) || product.name)
+              : (t(`prod_name_${product.id}`) || product.name)}
           </h3>
         </Link>
         
         <p className="text-xs text-muted-foreground mb-3 line-clamp-1">
-          {benefit || t(`prod_desc_${product.id}`) || product.description}
+          {benefit || ((product as any).category === 'kids'
+            ? (t(`kid_desc_${product.id}`) || product.description)
+            : (t(`prod_desc_${product.id}`) || product.description))}
         </p>
 
         {/* Colors */}
@@ -67,9 +71,9 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
             ${product.price}
           </span>
           <Link href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}>
-            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform uppercase tracking-wider">
+            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform uppercase tracking-wider font-bold">
               <ShoppingBag className="w-3.5 h-3.5" />
-              Buy
+              {t('buyBtn')}
             </Button>
           </Link>
         </div>

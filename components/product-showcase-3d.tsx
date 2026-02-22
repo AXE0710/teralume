@@ -4,6 +4,7 @@ import React, { Suspense, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Environment, Edges, Html } from '@react-three/drei'
 import * as THREE from 'three'
+import { useLanguage } from '@/components/language-provider'
 
 interface Product3DShowcaseProps {
   productType: 'cushion' | 'textile' | 'kitchen'
@@ -110,6 +111,7 @@ function SceneContent({ productType }: { productType: 'cushion' | 'textile' | 'k
 
 export function Product3DShowcase({ productType = 'cushion' }: Product3DShowcaseProps) {
   const [isLoading, setIsLoading] = useState(true)
+  const { t } = useLanguage()
 
   return (
     <div className="w-full h-96 rounded-lg overflow-hidden border border-border bg-gradient-to-br from-muted via-background to-muted shadow-lg relative">
@@ -118,7 +120,7 @@ export function Product3DShowcase({ productType = 'cushion' }: Product3DShowcase
           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-muted via-background to-muted">
             <div className="flex flex-col items-center gap-4">
               <div className="w-12 h-12 border-3 border-primary/20 border-t-primary rounded-full animate-spin" />
-              <p className="text-sm text-muted-foreground">Rendering 3D Model...</p>
+              <p className="text-sm text-muted-foreground">{t('rendering3D')}</p>
             </div>
           </div>
         }
@@ -136,9 +138,9 @@ export function Product3DShowcase({ productType = 'cushion' }: Product3DShowcase
       <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-end pb-4">
         <div className="text-center text-xs text-muted-foreground bg-gradient-to-t from-background via-background/80 to-transparent w-full py-3">
           <div className="flex items-center justify-center gap-2">
-            <span>🖱️ Drag to rotate</span>
+            <span>🖱️ {t('dragRotate')}</span>
             <span className="text-border">•</span>
-            <span>📜 Scroll to zoom</span>
+            <span>📜 {t('scrollZoom')}</span>
           </div>
         </div>
       </div>

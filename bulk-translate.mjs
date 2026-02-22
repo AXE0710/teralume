@@ -81,6 +81,22 @@ try {
     console.warn("Could not load products.json for translation:", e.message);
 }
 
+// Load kids products and add to enData
+try {
+    const kidsRaw = fs.readFileSync('./lib/kids.json', 'utf8');
+    const kidsProducts = JSON.parse(kidsRaw);
+    kidsProducts.forEach(p => {
+        enData[`kid_name_${p.id}`] = p.name;
+        enData[`kid_desc_${p.id}`] = p.description;
+        enData[`kid_long_${p.id}`] = p.longDescription;
+        enData[`kid_mat_${p.id}`] = p.material;
+        enData[`kid_care_${p.id}`] = p.care;
+    });
+    console.log(`Loaded ${kidsProducts.length} kids products for translation.`);
+} catch (e) {
+    console.warn("Could not load kids.json for translation:", e.message);
+}
+
 async function translateFile() {
   try {
     // 2. Ensure messages directory and English file exist

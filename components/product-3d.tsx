@@ -4,6 +4,7 @@ import React, { Suspense, useRef, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { PresentationControls, Environment, Edges } from '@react-three/drei'
 import * as THREE from 'three'
+import { useLanguage } from '@/components/language-provider'
 
 function CushionModel() {
   const meshRef = useRef<THREE.Mesh>(null)
@@ -104,13 +105,15 @@ function Scene3D() {
 }
 
 export function Product3D() {
+  const { t } = useLanguage()
+
   return (
     <div className="w-full h-96 rounded-lg overflow-hidden border border-border bg-gradient-to-b from-muted to-muted/50">
       <Suspense fallback={
         <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-muted to-muted/50">
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-2" />
-            <p className="text-sm text-muted-foreground">Loading 3D Experience...</p>
+            <p className="text-sm text-muted-foreground">{t('loading3D')}</p>
           </div>
         </div>
       }>
@@ -122,7 +125,7 @@ export function Product3D() {
         </Canvas>
       </Suspense>
       <div className="absolute bottom-0 left-0 right-0 p-3 text-center text-xs text-muted-foreground bg-gradient-to-t from-background to-transparent pointer-events-none">
-        💡 Drag to rotate • Scroll to zoom
+        💡 {t('dragRotateZoom')}
       </div>
     </div>
   )

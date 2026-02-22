@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { useLanguage } from '@/components/language-provider'
 
 export function ScreenshotPrevention() {
   const [show, setShow] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     let timeout: NodeJS.Timeout
@@ -55,7 +57,7 @@ export function ScreenshotPrevention() {
   return (
     <div className="fixed top-10 left-1/2 -translate-x-1/2 z-[100] pointer-events-none">
       <div className="bg-black text-white px-6 py-3 rounded-full shadow-lg font-medium text-sm animate-in fade-in slide-in-from-top-2 duration-300">
-        Screenshot not allowed
+        {t('screenshotWarning')}
       </div>
     </div>
   )

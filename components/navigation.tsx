@@ -30,22 +30,22 @@ export function Navigation() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link href="/" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               {t('navHome')}
             </Link>
-            <Link href="/catalog" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link href="/catalog" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               {t('navCatalog')}
             </Link>
-            <Link href="/kids" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              KIDS
+            <Link href="/kids" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              {t('navKids')}
             </Link>
-            <Link href="/catalog?collection=best-sellers" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
-              BEST SELLERS
+            <Link href="/catalog?collection=best-sellers" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+              {t('navBestSellers')}
             </Link>
-            <Link href="/about" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link href="/about" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               {t('navAbout')}
             </Link>
-            <Link href="/contact" className="text-xs font-light text-foreground hover:text-primary transition-colors uppercase tracking-widest">
+            <Link href="/contact" className="text-xs font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest">
               {t('navContact')}
             </Link>
 
@@ -87,10 +87,10 @@ export function Navigation() {
               {t('navCatalog')}
             </Link>
             <Link href="/kids" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
-              KIDS
+              {t('navKids')}
             </Link>
             <Link href="/catalog?collection=best-sellers" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
-              BEST SELLERS
+              {t('navBestSellers')}
             </Link>
             <Link href="/about" className="block px-4 py-2 text-sm font-medium text-foreground hover:text-primary uppercase">
               {t('navAbout')}
