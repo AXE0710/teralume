@@ -43,27 +43,27 @@ export function Footer() {
             <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('navTitle')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                <Link href="/" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('navHome')}
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                <Link href="/catalog" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('navShop')}
                 </Link>
                 </li>
               <li>
-                <Link href="/about" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                <Link href="/about" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('navAbout')}
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                <Link href="/catalog" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('navCatalog')}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                <Link href="/contact" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('navContact')}
                 </Link>
               </li>

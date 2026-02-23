@@ -11,11 +11,11 @@ export default function AboutPage() {
   const { t } = useLanguage()
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col overflow-x-hidden">
       <Navigation />
 
       {/* Hero Section with Big Logo */}
-      <section className="relative w-full py-16 md:py-32 flex flex-col items-center justify-center bg-secondary/20 overflow-hidden">
+      <section className="relative w-full pt-24 pb-16 md:py-32 flex flex-col items-center justify-center bg-secondary/20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
             <Image
                 src="/hero.png"
@@ -37,8 +37,8 @@ export default function AboutPage() {
           </div>
           
           <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl font-serif text-foreground tracking-tight">{t('aboutTitle')}</h1>
-            <p className="text-lg md:text-xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
+            <h1 className="text-3xl md:text-5xl font-serif text-foreground tracking-tight break-words hyphens-auto">{t('aboutTitle')}</h1>
+            <p className="text-base md:text-xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
               {t('aboutSubtitle')}
             </p>
           </div>
@@ -50,19 +50,19 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
             <div className="space-y-4">
-              <h3 className="text-2xl font-serif text-foreground"> {t('aboutTerraTitle')}</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-foreground"> {t('aboutTerraTitle')}</h3>
               <p className="text-muted-foreground font-light leading-relaxed">
                 {t('aboutTerraDesc')}
               </p>
             </div>
             <div className="space-y-4">
-              <h3 className="text-2xl font-serif text-foreground"> {t('aboutLumeTitle')}</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-foreground"> {t('aboutLumeTitle')}</h3>
               <p className="text-muted-foreground font-light leading-relaxed">
                 {t('aboutLumeDesc')}
               </p>
             </div>
             <div className="space-y-4">
-              <h3 className="text-2xl font-serif text-foreground"> {t('aboutLivingTitle')}</h3>
+              <h3 className="text-xl md:text-2xl font-serif text-foreground"> {t('aboutLivingTitle')}</h3>
               <p className="text-muted-foreground font-light leading-relaxed">
                 {t('aboutLivingDesc')}
               </p>
@@ -70,8 +70,8 @@ export default function AboutPage() {
           </div>
           
           <div className="mt-12 md:mt-16 text-center max-w-3xl mx-auto bg-secondary/20 p-6 md:p-8 rounded-2xl">
-            <h3 className="text-xl font-serif text-foreground mb-4"> {t('aboutCoreMeaningTitle')}</h3>
-            <p className="text-lg md:text-xl text-foreground/80 font-light italic">
+            <h3 className="text-lg md:text-xl font-serif text-foreground mb-4"> {t('aboutCoreMeaningTitle')}</h3>
+            <p className="text-base md:text-xl text-foreground/80 font-light italic">
               {t('aboutCoreMeaningDesc')}
             </p>
           </div>
@@ -82,9 +82,9 @@ export default function AboutPage() {
       <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-5xl mx-auto space-y-12 md:space-y-20">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-6">{t('aboutStoryTitle')}</h2>
+            <h2 className="text-2xl md:text-4xl font-serif text-foreground mb-6 break-words hyphens-auto">{t('aboutStoryTitle')}</h2>
             <div className="w-20 h-1 bg-primary/20 mx-auto mb-8 rounded-full" />
-            <p className="text-lg text-muted-foreground leading-relaxed font-light">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-light">
               {t('aboutStoryDesc')}
             </p>
           </div>
@@ -99,8 +99,8 @@ export default function AboutPage() {
               />
             </div>
             <div className="space-y-6 md:pl-8">
-              <h3 className="text-2xl md:text-3xl font-serif text-foreground">{t('aboutCraftedTitle')}</h3>
-              <div className="text-muted-foreground font-light leading-relaxed space-y-4">
+              <h3 className="text-xl md:text-3xl font-serif text-foreground">{t('aboutCraftedTitle')}</h3>
+              <div className="text-muted-foreground font-light leading-relaxed space-y-4 text-base">
                 <p>
                   {t('aboutCraftedDesc1')}
                 </p>
@@ -113,8 +113,8 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="space-y-6 md:pr-8 order-2 md:order-1">
-              <h3 className="text-2xl md:text-3xl font-serif text-foreground">{t('aboutSustainableTitle')}</h3>
-              <p className="text-muted-foreground font-light leading-relaxed">
+              <h3 className="text-xl md:text-3xl font-serif text-foreground">{t('aboutSustainableTitle')}</h3>
+              <p className="text-base text-muted-foreground font-light leading-relaxed">
                 {t('aboutSustainableDesc')}
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
       <section className="py-12 md:py-20 bg-secondary/30 border-t border-border/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif text-foreground">{t('aboutPhilosophyTitle')}</h2>
+            <h2 className="text-2xl md:text-4xl font-serif text-foreground break-words hyphens-auto">{t('aboutPhilosophyTitle')}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -143,8 +143,8 @@ export default function AboutPage() {
               { title: t('aboutPhilTimeless'), desc: t('aboutPhilTimelessDesc') }
             ].map((item, i) => (
               <div key={i} className="bg-background p-8 rounded-xl border border-border/50 text-center hover:shadow-lg transition-all duration-300 group">
-                <h3 className="text-xl font-serif text-foreground mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
-                <p className="text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+                <h3 className="text-lg md:text-xl font-serif text-foreground mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -156,19 +156,19 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             
-            <div className="space-y-2 flex flex-col items-center">
+            <div className="space-y-2 flex flex-col items-center px-2">
               <Users className="w-8 h-8 text-primary/60 mb-2" />
-              <h4 className="font-medium text-foreground">{t('aboutTrustEthical')}</h4>
+              <h4 className="font-medium text-foreground text-sm md:text-base">{t('aboutTrustEthical')}</h4>
               <p className="text-xs text-muted-foreground font-light">{t('aboutTrustEthicalDesc')}</p>
             </div>
-            <div className="space-y-2 flex flex-col items-center">
+            <div className="space-y-2 flex flex-col items-center px-2">
               <Package className="w-8 h-8 text-primary/60 mb-2" />
-              <h4 className="font-medium text-foreground">{t('aboutTrustShipping')}</h4>
+              <h4 className="font-medium text-foreground text-sm md:text-base">{t('aboutTrustShipping')}</h4>
               <p className="text-xs text-muted-foreground font-light">{t('aboutTrustShippingDesc')}</p>
             </div>
-            <div className="space-y-2 flex flex-col items-center">
+            <div className="space-y-2 flex flex-col items-center px-2">
               <ShieldCheck className="w-8 h-8 text-primary/60 mb-2" />
-              <h4 className="font-medium text-foreground">{t('aboutTrustSecure')}</h4>
+              <h4 className="font-medium text-foreground text-sm md:text-base">{t('aboutTrustSecure')}</h4>
               <p className="text-xs text-muted-foreground font-light">{t('aboutTrustSecureDesc')}</p>
             </div>
           </div>

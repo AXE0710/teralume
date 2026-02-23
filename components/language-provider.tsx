@@ -52,10 +52,10 @@ const defaultEn = {
   qualityGuarantee: "Quality Guarantee",
   secureShopping: "Secure Shopping",
   navTitle: "Navigation",
-  navHome: "Home",
+  navHome: "Living",
   navShop: "Shop",
-  navAbout: "About",
-  navCatalog: "Catalog",
+  navAbout: "Our Philosophy",
+  navCatalog: "Collection",
   navContact: "Contact",
   catTitle: "Categories",
   catCushions: "Cushions",
@@ -67,8 +67,8 @@ const defaultEn = {
   privacy: "Privacy Policy",
   terms: "Terms of Service",
   legal: "Imprint",
-  navKids: "KIDS",
-  navBestSellers: "BEST SELLERS",
+  navKids: "Little Living",
+  navBestSellers: "Essentials",
   buyBtn: "Buy",
   screenshotWarning: "Screenshot not allowed",
   loading3D: "Loading 3D Experience...",
@@ -131,7 +131,14 @@ const defaultEn = {
   kid_name_3: "Crib Sheet - Sage",
   kid_desc_3: "Fits standard crib mattresses",
   kid_name_4: "Hooded Towel",
-  kid_desc_4: "Ultra-absorbent and cozy"
+  kid_desc_4: "Ultra-absorbent and cozy",
+  catalogSubtitle: "Explore our collection of sustainable home textiles, handcrafted with care and designed for modern living.",
+  catFilterAll: "All Products",
+  catFilterTableLinen: "Table Linen",
+  catFilterKitchen: "Kitchen",
+  catFilterThrows: "Throws & Blankets",
+  catFilterBeach: "Beach",
+  catFilterBags: "Bags"
 }
 
 const defaultDe = {
@@ -170,10 +177,10 @@ const defaultDe = {
   qualityGuarantee: "Qualitätsgarantie",
   secureShopping: "Sicherer Einkauf",
   navTitle: "Navigation",
-  navHome: "Startseite",
+  navHome: "Wohnen",
   navShop: "Shop",
-  navAbout: "Über uns",
-  navCatalog: "Katalog",
+  navAbout: "Philosophie",
+  navCatalog: "Kollektion",
   navContact: "Kontakt",
   catTitle: "Kategorien",
   catCushions: "Kissen",
@@ -185,8 +192,8 @@ const defaultDe = {
   privacy: "Datenschutz",
   terms: "AGB",
   legal: "Impressum",
-  navKids: "KINDER",
-  navBestSellers: "MEISTVERKAUFT",
+  navKids: "Kleine Welt",
+  navBestSellers: "Essentials",
   buyBtn: "Kaufen",
   screenshotWarning: "Screenshot nicht erlaubt",
   loading3D: "Lade 3D-Erlebnis...",
@@ -249,7 +256,14 @@ const defaultDe = {
   kid_name_3: "Spannbettlaken - Salbei",
   kid_desc_3: "Passend für Standard-Kinderbetten",
   kid_name_4: "Kapuzenhandtuch",
-  kid_desc_4: "Ultra-saugfähig und gemütlich"
+  kid_desc_4: "Ultra-saugfähig und gemütlich",
+  catalogSubtitle: "Entdecken Sie unsere Kollektion nachhaltiger Heimtextilien, sorgfältig handgefertigt und für modernes Wohnen entworfen.",
+  catFilterAll: "Alle Produkte",
+  catFilterTableLinen: "Tischwäsche",
+  catFilterKitchen: "Küche",
+  catFilterThrows: "Decken & Überwürfe",
+  catFilterBeach: "Strand",
+  catFilterBags: "Taschen"
 }
 
 const translations: Record<Language, Record<string, string>> = {
@@ -278,6 +292,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       }
     }
   }, [])
+
+  useEffect(() => {
+    document.documentElement.lang = language
+  }, [language])
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang)

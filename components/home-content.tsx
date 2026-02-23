@@ -17,41 +17,42 @@ export function HomeContent() {
   const bestSellers = products.slice(0, 4)
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col overflow-x-hidden">
       <Navigation />
 
       {/* Hero */}
       <Hero />
 
+      <div className="relative z-10 bg-background">
       {/* Trust Bar */}
-      <section className="py-12 bg-secondary/20 border-b border-border/40">
+      <section className="py-8 md:py-12 bg-secondary/20 border-b border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="flex flex-col items-center gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-8 text-center">
+            <div className="flex flex-col items-center gap-3 px-2">
               <Leaf className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground uppercase tracking-wider">{t('trustOrganic')}</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider hyphens-auto">{t('trustOrganic')}</span>
                 <span className="text-xs text-muted-foreground">{t('trustOrganicDesc')}</span>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 px-2">
               <Users className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground uppercase tracking-wider">{t('trustEthical')}</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider hyphens-auto">{t('trustEthical')}</span>
                 <span className="text-xs text-muted-foreground">{t('trustEthicalDesc')}</span>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 px-2">
               <ShieldCheck className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground uppercase tracking-wider">{t('trustQuality')}</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider hyphens-auto">{t('trustQuality')}</span>
                 <span className="text-xs text-muted-foreground">{t('trustQualityDesc')}</span>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3 px-2">
               <Globe className="w-6 h-6 text-primary/70" />
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-foreground uppercase tracking-wider">{t('trustShipping')}</span>
+                <span className="text-sm font-medium text-foreground uppercase tracking-wider hyphens-auto">{t('trustShipping')}</span>
                 <span className="text-xs text-muted-foreground">{t('trustShippingDesc')}</span>
               </div>
             </div>
@@ -61,17 +62,17 @@ export function HomeContent() {
 
       {/* Featured Products */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex justify-between items-end mb-8 md:mb-12">
           <div>
-            <h2 className="text-3xl font-serif text-foreground mb-2">{t('featuredTitle')}</h2>
-            <p className="text-muted-foreground">{t('featuredSubtitle')}</p>
+            <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-2 break-words hyphens-auto">{t('featuredTitle')}</h2>
+            <p className="text-sm md:text-base text-muted-foreground">{t('featuredSubtitle')}</p>
           </div>
           <Link href="/catalog" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group uppercase tracking-widest">
             {t('exploreDesigns')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {featuredProducts.map((product, index) => (
             <ProductCard 
               key={product.id} 
@@ -95,7 +96,7 @@ export function HomeContent() {
       <section className="py-12 md:py-20 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-             <div className="relative h-64 md:h-96 rounded-lg overflow-hidden">
+             <div className="relative h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden">
                <Image 
                  src="/products/kitchen-2.jpg" 
                  alt="Sustainable Organic Cotton Kitchen Textiles" 
@@ -104,8 +105,8 @@ export function HomeContent() {
                />
              </div>
              <div className="space-y-6">
-               <h2 className="text-3xl md:text-4xl font-serif text-foreground">{t('craftTitle')}</h2>
-               <p className="text-lg text-muted-foreground font-light leading-relaxed">
+               <h2 className="text-2xl md:text-4xl font-serif text-foreground break-words hyphens-auto">{t('craftTitle')}</h2>
+               <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
                  {t('craftDesc')}
                </p>
                
@@ -125,11 +126,11 @@ export function HomeContent() {
       {/* Brand Story */}
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-serif text-foreground">{t('storyTitle')}</h2>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          <h2 className="text-2xl md:text-4xl font-serif text-foreground break-words hyphens-auto">{t('storyTitle')}</h2>
+          <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
             {t('storyDesc1')}
           </p>
-          <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground font-light leading-relaxed">
             {t('storyDesc2')}
           </p>
           <div className="pt-4">
@@ -142,17 +143,17 @@ export function HomeContent() {
 
       {/* Best Sellers */}
       <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-border/40">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex justify-between items-end mb-8 md:mb-12">
           <div>
-            <h2 className="text-3xl font-serif text-foreground mb-2">{t('bestSellersTitle')}</h2>
-            <p className="text-muted-foreground">{t('bestSellersSubtitle')}</p>
+            <h2 className="text-2xl md:text-3xl font-serif text-foreground mb-2 break-words hyphens-auto">{t('bestSellersTitle')}</h2>
+            <p className="text-sm md:text-base text-muted-foreground">{t('bestSellersSubtitle')}</p>
           </div>
           <Link href="/catalog?collection=best-sellers" className="hidden md:flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors group uppercase tracking-widest">
             {t('viewAll')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {bestSellers.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -160,10 +161,10 @@ export function HomeContent() {
       </section>
 
       {/* Newsletter / Community */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-serif">{t('newsletterTitle')}</h2>
-          <p className="text-lg text-primary-foreground/80 font-light max-w-2xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-serif break-words hyphens-auto">{t('newsletterTitle')}</h2>
+          <p className="text-base md:text-lg text-primary-foreground/80 font-light max-w-2xl mx-auto">
             {t('newsletterDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
@@ -183,6 +184,7 @@ export function HomeContent() {
       </section>
 
       <Footer />
+      </div>
     </div>
   )
 }

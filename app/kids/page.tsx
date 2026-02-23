@@ -18,7 +18,7 @@ export default function KidsPage() {
       <Navigation />
       
       {/* Hero */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] w-full overflow-hidden flex items-center justify-center">
         <Image
           src="/hero.jpg"
           alt="Terralume Mini"
@@ -27,12 +27,12 @@ export default function KidsPage() {
           priority
         />
         <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex items-center justify-center text-center">
-          <div className="max-w-3xl px-4 space-y-6">
-            <h1 className="text-4xl md:text-6xl font-serif font-medium text-white tracking-tight">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full px-4 sm:px-6 py-12 md:py-24">
+          <div className="max-w-4xl space-y-4 md:space-y-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white tracking-tight break-words hyphens-auto">
               {t('kidsHeroTitle')}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 font-light max-w-xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 font-light max-w-xl mx-auto">
               {t('kidsHeroSubtitle')}
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function KidsPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
           {allProducts.map(product => (
             <ProductCard key={product.id} product={product as any} />
           ))}

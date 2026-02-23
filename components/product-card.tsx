@@ -66,7 +66,7 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
         )}
 
         {/* Price and Action */}
-        <div className="mt-auto flex items-center justify-between pt-2">
+        <div className="mt-auto flex items-center justify-between pt-2 flex-wrap gap-2">
           <span className="text-lg font-bold text-primary globalseo-exclude">
             ${product.price}
           </span>

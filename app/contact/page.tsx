@@ -18,14 +18,14 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col overflow-x-hidden">
       <Navigation />
 
-      <main className="flex-grow py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow py-12 md:py-24 px-4 sm:px-6 lg:px-8 pt-24 md:pt-32">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">{t('contactPageTitle')}</h1>
-            <p className="text-lg text-muted-foreground font-light max-w-2xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <h1 className="text-3xl md:text-5xl font-serif text-foreground mb-4 break-words hyphens-auto">{t('contactPageTitle')}</h1>
+            <p className="text-base md:text-lg text-muted-foreground font-light max-w-2xl mx-auto">
               {t('contactPageSubtitle')}
             </p>
           </div>
