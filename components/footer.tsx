@@ -90,7 +90,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('contactTitle')}</h3>
             <div className="space-y-3">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md">
                 <input
                   type="email"
                   placeholder={t('emailPlaceholder')}
@@ -112,7 +112,7 @@ export function Footer() {
               <p className="text-xs text-foreground/60">
                 © {currentYear} Terralume Living. {t('copyright')}
               </p>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
                 <Link href="/privacy" className="text-xs text-foreground/60 hover:text-primary transition-colors uppercase tracking-widest">
                   {t('privacy')}
                 </Link>
