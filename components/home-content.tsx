@@ -167,16 +167,18 @@ export function HomeContent() {
           <p className="text-base md:text-lg text-primary-foreground/80 font-light max-w-2xl mx-auto">
             {t('newsletterDesc')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <form action="https://formsubmit.co/info@terralumeliving.com" method="POST" target="_blank" className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input 
               type="email" 
+              name="email"
+              required
               placeholder={t('emailPlaceholder')}
               className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
             />
-            <Button size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 uppercase tracking-widest font-bold">
+            <Button type="submit" size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 uppercase tracking-widest font-bold">
               {t('joinNowBtn')}
             </Button>
-          </div>
+          </form>
           <p className="text-sm text-primary-foreground/60 font-light">
             {t('newsletterNote')}
           </p>

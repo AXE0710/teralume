@@ -90,16 +90,18 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('contactTitle')}</h3>
             <div className="space-y-3">
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md">
+              <form action="https://formsubmit.co/info@terralumeliving.com" method="POST" target="_blank" className="flex flex-col sm:flex-row gap-4 max-w-md">
                 <input
                   type="email"
+                  name="email"
+                  required
                   placeholder={t('emailPlaceholder')}
                   className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
-                <Button size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest font-bold">
+                <Button type="submit" size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest font-bold">
                   {t('joinBtn')}
                 </Button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
