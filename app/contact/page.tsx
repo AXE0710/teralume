@@ -5,7 +5,7 @@ import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/components/language-provider'
-import { Mail, MapPin, Clock } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -39,8 +39,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-foreground mb-1">{t('contactEmail')}</h3>
-                  <p className="text-muted-foreground font-light">hello@terralume-living.com</p>
-                  <p className="text-muted-foreground font-light">support@terralume-living.com</p>
+                  <p className="text-muted-foreground font-light">info@terralumeliving.com</p>
                 </div>
               </div>
 
@@ -50,18 +49,19 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-foreground mb-1">{t('contactAddress')}</h3>
-                  <p className="text-muted-foreground font-light">123 Sustainable Way</p>
-                  <p className="text-muted-foreground font-light">Eco District, Berlin 10115</p>
+                  <p className="text-muted-foreground font-light">Terralume Living UG</p>
+                  <p className="text-muted-foreground font-light">Am Irscher Hof 73</p>
+                  <p className="text-muted-foreground font-light">54294 Trier, Germany</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center shrink-0">
-                  <Clock className="w-6 h-6 text-primary" />
+                  <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-foreground mb-1">{t('contactHours')}</h3>
-                  <p className="text-muted-foreground font-light">{t('contactHoursDesc')}</p>
+                  <h3 className="text-lg font-medium text-foreground mb-1">Phone</h3>
+                  <p className="text-muted-foreground font-light">+49 175 92 777 97</p>
                 </div>
               </div>
             </div>

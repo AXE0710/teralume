@@ -127,27 +127,15 @@ export function Footer() {
 
             {/* Social Links */}
             <div className="flex items-center gap-6">
+
               <a
-                href="#"
-                className="text-foreground/60 hover:text-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/Terralumeliving/"
                 className="text-foreground/60 hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a
-                href="#"
-                className="text-foreground/60 hover:text-primary transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
+
             </div>
           </div>
         </div>

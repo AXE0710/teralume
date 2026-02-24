@@ -14,7 +14,9 @@ export default function ImprintPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <ImprintContent />
+      <main className="flex-grow pt-24 md:pt-32">
+        <ImprintContent />
+      </main>
       <Footer />
     </div>
   )

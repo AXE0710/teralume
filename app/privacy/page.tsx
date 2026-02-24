@@ -14,7 +14,9 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      <PrivacyContent />
+      <main className="flex-grow pt-24 md:pt-32">
+        <PrivacyContent />
+      </main>
       <Footer />
     </div>
   )
