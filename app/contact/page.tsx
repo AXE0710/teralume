@@ -61,7 +61,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-                <form action="https://formsubmit.co/aayushkewat0710@gmail.com" method="POST" target="_blank" className="space-y-6">
+                <form action="https://formsubmit.co/info@terralumeliving.com" method="POST" target="_blank" className="space-y-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-foreground uppercase tracking-wider">
                       {t('contactName')}
