@@ -90,8 +90,8 @@ function CatalogContent() {
                   variant={currentCategory === category.id ? "default" : "outline"}
                   onClick={() => handleCategoryChange(category.id)}
                   className={cn(
-                    "rounded-full capitalize",
-                    currentCategory === category.id ? "" : "hover:bg-muted"
+                    "rounded-full capitalize hover:scale-105 transition-all duration-300",
+                    currentCategory === category.id ? "" : "hover:bg-primary hover:text-white"
                   )}
                 >
                   {category.label}

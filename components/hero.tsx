@@ -31,7 +31,7 @@ export function Hero() {
             {t('heroSubtitle')}
           </p>
           <Link href="/catalog" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-md uppercase tracking-widest font-bold py-6 h-auto whitespace-normal text-sm sm:text-base">
+            <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-md uppercase tracking-widest font-bold py-6 h-auto whitespace-normal text-sm sm:text-base">
               {t('cta')}
             </Button>
           </Link>

@@ -75,13 +75,19 @@ export function Footer() {
             <h3 className="font-semibold text-foreground uppercase tracking-widest">{t('catTitle')}</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catCushions')}</span>
+                <Link href="/catalog?category=cushions" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('catCushions')}
+                </Link>
               </li>
               <li>
-                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catKitchen')}</span>
+                <Link href="/catalog?category=kitchen" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('catKitchen')}
+                </Link>
               </li>
               <li>
-                <span className="text-sm text-foreground/70 uppercase tracking-widest">{t('catLiving')}</span>
+                <Link href="/catalog?category=living" className="block py-1 text-sm text-foreground/70 hover:text-primary transition-colors uppercase tracking-widest">
+                  {t('catLiving')}
+                </Link>
               </li>
             </ul>
           </div>
@@ -98,7 +104,7 @@ export function Footer() {
                   placeholder={t('emailPlaceholder')}
                   className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
                 />
-                <Button type="submit" size="md" className="bg-white text-black hover:bg-white/90 border-none text-sm px-4 h-auto uppercase tracking-widest font-bold">
+                <Button type="submit" size="md" className="bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 border-none text-sm px-4 h-auto uppercase tracking-widest font-bold">
                   {t('joinBtn')}
                 </Button>
               </form>

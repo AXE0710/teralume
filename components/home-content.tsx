@@ -85,7 +85,7 @@ export function HomeContent() {
         
         <div className="mt-12 text-center md:hidden">
           <Link href="/catalog">
-            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-white transition-colors uppercase tracking-widest font-bold">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all duration-300 uppercase tracking-widest font-bold">
               {t('exploreDesigns')}
             </Button>
           </Link>
@@ -112,7 +112,7 @@ export function HomeContent() {
                
                <div className="flex flex-col sm:flex-row gap-4 pt-2">
                  <Link href="/about">
-                   <Button variant="outline" size="lg" className="w-full sm:w-auto uppercase tracking-widest font-bold">{t('ourStoryBtn')}</Button>
+                   <Button variant="outline" size="lg" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all duration-300 uppercase tracking-widest font-bold">{t('ourStoryBtn')}</Button>
                  </Link>
                  <Link href="/catalog">
                    <Button size="lg" className="w-full sm:w-auto shadow-md hover:scale-105 transition-all duration-300 uppercase tracking-widest font-bold">{t('shopSustainableBtn')}</Button>
@@ -135,7 +135,7 @@ export function HomeContent() {
           </p>
           <div className="pt-4">
             <Link href="/about">
-              <Button variant="outline" size="lg" className="uppercase tracking-widest font-bold">{t('readStoryBtn')}</Button>
+              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all duration-300 uppercase tracking-widest font-bold">{t('readStoryBtn')}</Button>
             </Link>
           </div>
         </div>
@@ -175,7 +175,7 @@ export function HomeContent() {
               placeholder={t('emailPlaceholder')}
               className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
             />
-            <Button type="submit" size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 uppercase tracking-widest font-bold">
+            <Button type="submit" size="lg" variant="secondary" className="bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all duration-300 uppercase tracking-widest font-bold">
               {t('joinNowBtn')}
             </Button>
           </form>

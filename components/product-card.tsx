@@ -71,7 +71,7 @@ export function ProductCard({ product, badge, benefit }: ProductCardProps) {
             ${product.price}
           </span>
           <Link href={`/contact?product=${encodeURIComponent(product.name)}&intent=buy`}>
-            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-transform uppercase tracking-wider font-bold">
+            <Button size="sm" className="h-8 px-3 text-xs gap-1.5 hover:scale-105 transition-all duration-300 uppercase tracking-wider font-bold">
               <ShoppingBag className="w-3.5 h-3.5" />
               {t('buyBtn')}
             </Button>
