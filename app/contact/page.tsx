@@ -1,14 +1,39 @@
 'use client'
 
-import React from "react"
+import React, { useEffect, useRef, useActionState } from "react"
+import { useFormStatus } from "react-dom"
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/components/language-provider'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { sendEmail } from "./actions"
+
+const initialState = {
+  message: "",
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  const { t } = useLanguage()
+
+  return (
+    <Button type="submit" size="lg" className="w-full uppercase tracking-widest font-bold" disabled={pending}>
+      {pending ? '...' : t('contactSend')}
+    </Button>
+  )
+}
 
 export default function ContactPage() {
   const { t } = useLanguage()
+  const [state, formAction] = useActionState(sendEmail, initialState)
+  const formRef = useRef<HTMLFormElement>(null)
+
+  useEffect(() => {
+    if (state.message === 'success') {
+      formRef.current?.reset()
+    }
+  }, [state])
 
   return (
     <div className="min-h-screen bg-background flex flex-col overflow-x-hidden">
@@ -61,7 +86,7 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-                <form action="https://formsubmit.co/info@terralumeliving.com" method="POST" target="_blank" className="space-y-6">
+                <form ref={formRef} action={formAction} className="space-y-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-foreground uppercase tracking-wider">
                       {t('contactName')}
@@ -101,9 +126,17 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full uppercase tracking-widest font-bold">
-                    {t('contactSend')}
-                  </Button>
+                  {state.message === 'success' ? (
+                    <div className="p-4 rounded-md bg-green-50 border border-green-200 text-green-600 text-sm">
+                      {t('contactSuccess')}
+                    </div>
+                  ) : state.message ? (
+                    <div className="p-4 rounded-md bg-red-50 border border-red-200 text-red-600 text-sm">
+                      {state.message}
+                    </div>
+                  ) : null}
+
+                  <SubmitButton />
                 </form>
             </div>
           </div>
