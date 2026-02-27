@@ -154,7 +154,7 @@ export default function AboutPage() {
       {/* Trust Indicators */}
       <section className="py-12 bg-background border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             
             <div className="space-y-2 flex flex-col items-center px-2">
               <Users className="w-8 h-8 text-primary/60 mb-2" />

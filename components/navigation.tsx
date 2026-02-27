@@ -52,7 +52,7 @@ export function Navigation() {
             <div className="flex items-center gap-2 border-l border-border/50 pl-6">
               <button 
                 onClick={() => setLanguage('en')}
-                className={`text-xs transition-colors uppercase tracking-widest ${language === 'en' ? 'font-bold text-primary' : 'font-light text-foreground/70 hover:text-primary'}`}
+                className={`text-xs transition-colors uppercase  tracking-widest ${language === 'en' ? 'font-bold text-primary' : 'font-light text-foreground/70 hover:text-primary'}`}
               >
                 EN
               </button>

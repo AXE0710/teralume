@@ -1,13 +1,20 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('Missing RESEND_API_KEY environment variable')
+if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+  throw new Error('Missing GMAIL_USER or GMAIL_APP_PASSWORD environment variable')
 }
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: "aayushkewat0710@gmail.com",
+    pass: "dufe vdmi oywc xjiy",
+    
+  },
+})
 
 export async function sendEmail(prevState: any, formData: FormData) {
   const name = formData.get('name') as string
@@ -19,10 +26,10 @@ export async function sendEmail(prevState: any, formData: FormData) {
   }
 
   try {
-    await resend.emails.send({
-      from: 'terralume@resend.dev',
+    await transporter.sendMail({
+      from: "aayushkewat0710@gmail.com",
       to: 'info@terralumeliving.com',
-      reply_to: email,
+      replyTo: email,
       subject: `New message from ${name} via Terralume Living`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     })
